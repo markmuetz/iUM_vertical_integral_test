@@ -26,7 +26,7 @@ computers = {
 expts = ['MC_on', 'MC_off']
 comp = computers['rdf-comp']
 for expt in expts:
-    comp['dirs']['work_' + expt] = '/nerc/n02/n02/mmuetz/um10.5_runs/20day/u-af095_64x64km2_1km_{}/work'.format(expt)
+    comp['dirs']['work_' + expt] = '/nerc/n02/n02/mmuetz/um10.5_runs/4day/iUM_vertical_integral_test_{}/work'.format(expt)
     comp['dirs']['results_' + expt] = '/nerc/n02/n02/mmuetz/omni_output/iUM_vertical_integral_test/results_{}'.format(expt)
 
 comp = computers['zerogravitas']
@@ -46,7 +46,7 @@ for expt in expts:
 	    'type': 'init',
 	    'base_dir': 'work_' + expt,
 	    'batch': 'batch0',
-	    'filename_glob': '2000??????????/atmos2/atmos.00?.pp5',
+	    'filename_glob': '2000??????????/atmos/atmos.00?.pp5',
 	    }
 
     groups['nc5_' + expt] = {
