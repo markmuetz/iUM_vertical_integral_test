@@ -1,14 +1,6 @@
-from collections import OrderedDict as odict
-import importlib
-
 import numpy as np
 
 from omnium.processes import PylabProcess
-
-OPTS = odict([(12, {182: {'l': 'Adv.', 'fmt': 'r-'}}),
-             (9, {182: {'l': 'BL+cloud', 'fmt': 'r--'}}),
-             (4, {182: {'l': 'LS rain', 'fmt': 'b--'}}),
-             (30, {182: {'l': 'Total', 'fmt': 'k-'}})])
 
 
 def find_cube(cubes, section_item):
@@ -54,8 +46,7 @@ class PlotColTotals(PylabProcess):
 	cb = self.plt.colorbar()
 	cb.set_label('(kg m$^{-2}$)')
 
-        #self.plt.xlim((-10, 10))
-        #self.plt.xlabel('(g kg$^{-1}$ day$^{-1}$)')
-        #self.plt.ylabel('Height (km)')
+        self.plt.xlabel('(km)')
+        self.plt.ylabel('(km)')
 
         self.processed_data = fig
