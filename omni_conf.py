@@ -13,7 +13,7 @@ computers = {
         'remote_address': 'mmuetz@login.rdf.ac.uk',
         'remote_path': '/nerc/n02/n02/mmuetz/omnis/iUM_vertical_integral_test',
         'dirs': {
-            'output': '/home/markmuetz/omni_output/iUM_vertical_integral_test/output'
+            'output': '/home/markmuetz/Dropbox/omni_output/iUM_vertical_integral_test/output'
         }
     },
     'rdf-comp': {
