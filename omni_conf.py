@@ -8,7 +8,7 @@ settings = {
 
 computer_name = open('computer.txt').read().strip()
 computers = {
-    'zerogravitas': {
+    'breakeven': {
         'remote': 'rdf-comp',
         'remote_address': 'mmuetz@login.rdf.ac.uk',
         'remote_path': '/nerc/n02/n02/mmuetz/omnis/iUM_vertical_integral_test',
@@ -30,7 +30,7 @@ for expt in expts:
     comp['dirs']['work_' + expt] = '/nerc/n02/n02/mmuetz/um10.5_runs/4day/iUM_vertical_integral_test_{}/work'.format(expt)
     comp['dirs']['results_' + expt] = '/nerc/n02/n02/mmuetz/omni_output/iUM_vertical_integral_test/results_{}'.format(expt)
 
-comp = computers['zerogravitas']
+comp = computers['breakeven']
 for expt in expts:
     comp['dirs']['work_' + expt] = '/home/markmuetz/omni_output/iUM_vertical_integral_test/work_{}'.format(expt)
     comp['dirs']['results_' + expt] = '/home/markmuetz/omni_output/iUM_vertical_integral_test/results_{}'.format(expt)
