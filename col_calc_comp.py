@@ -23,12 +23,14 @@ if __name__ == '__main__':
     stash = om.Stash()
 
     atmos5nodes = dag.get_nodes('atmos.006.5.nc')
-    atmos5s = [proc_eng.load(n) for n in atmos5nodes]
-    [stash.rename_unknown_cubes(cbs, True) for cbs in atmos5s]
     mwvi = process_classes['mass_weighted_vertical_integral'](config, None)
     mwvi.load_modules()
 
-    for atmos5 in atmos5s:
+    for atmos5node in atmos5nodes:
+	print(atmos5node.group)
+	atmos5 = proc_eng.load(atmos5node)
+	stash.rename_unknown_cubes(atmos5, True)
+
 	rhoR2 = find_cube(atmos5, (0, 253))
 
 	qvars = odict()
@@ -56,11 +58,11 @@ if __name__ == '__main__':
 	qw_col_diag = total_wet_col_diag.data - total_dry_col_diag.data
 	qw_col_calc = (q_col_vars['q'].data +
 	               q_col_vars['qcl'].data +
-	               q_col_vars['qcf'].data +
+	               q_col_vars['qcf'].data + 
 	               q_col_vars['qrain'].data +
 	               q_col_vars['qgraup'].data)
 	plt.ion()
-	for i in range(qw_col_diag.shape[0]):
+	for i in range(qw_col_diag.shape[0])[:1]:
 	    plt.figure(1)
 	    plt.clf()
 	    plt.title('qw_col_calc')
@@ -79,9 +81,10 @@ if __name__ == '__main__':
 	    plt.figure(3)
 	    plt.clf()
 	    plt.title('qw_col_diag - qw_col_calc')
+	    print(diff.max())
+	    print(diff.min())
 	    max_min = max(np.abs(diff.min()), diff.max())
 	    plt.imshow(diff[i], interpolation='nearest', cmap=plt.cm.bwr, vmin=-max_min, vmax=max_min)
 	    plt.colorbar()
 	    plt.pause(0.1)
 	    raw_input()
-
