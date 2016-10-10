@@ -16,6 +16,14 @@ computers = {
             'output': '/home/markmuetz/Dropbox/omni_output/iUM_vertical_integral_test/output'
         }
     },
+    'nxnode': {
+        'remote': 'rdf-comp',
+        'remote_address': 'mmuetz@login.rdf.ac.uk',
+        'remote_path': '/nerc/n02/n02/mmuetz/omnis/iUM_vertical_integral_test',
+        'dirs': {
+            'output': '/home/hb865130/omni_output/iUM_vertical_integral_test/output'
+        }
+    },
     'rdf-comp': {
         'dirs': {
             'output': '/nerc/n02/n02/mmuetz/omni_output/iUM_vertical_integral_test/output',
@@ -34,6 +42,11 @@ comp = computers['breakeven']
 for expt in expts:
     comp['dirs']['work_' + expt] = '/home/markmuetz/omni_output/iUM_vertical_integral_test/work_{}'.format(expt)
     comp['dirs']['results_' + expt] = '/home/markmuetz/omni_output/iUM_vertical_integral_test/results_{}'.format(expt)
+
+comp = computers['nxnode']
+for expt in expts:
+    comp['dirs']['work_' + expt] = '/home/hb865130/omni_output/iUM_vertical_integral_test/work_{}'.format(expt)
+    comp['dirs']['results_' + expt] = '/home/hb865130/omni_output/iUM_vertical_integral_test/results_{}'.format(expt)
 
 
 batches = odict(('batch{}'.format(i), {'index': i}) for i in range(4))
