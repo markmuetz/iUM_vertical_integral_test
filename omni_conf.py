@@ -117,10 +117,23 @@ for expt in expts:
         'nodes': ['col_totals_plot_' + expt],
     }
 
+    groups['col_q_plot_' + expt] = {
+        'type': 'nodes_process',
+        'base_dir': 'output',
+        'batch': 'batch3',
+        'nodes': ['col_q_plot_' + expt],
+    }
+
     nodes['col_totals_plot_' + expt] = {
         'type': 'from_nodes',
         'from_nodes': [bn + '_' + expt for bn in base_nodes] + ['Mtot_diag_' + expt, 'Mdry_diag_' + expt],
         'process': 'plot_col_totals',
+    }
+
+    nodes['col_q_plot_' + expt] = {
+        'type': 'from_nodes',
+        'from_nodes': [bn + '_' + expt for bn in base_nodes],
+        'process': 'plot_q_totals',
     }
 
 variables = {
